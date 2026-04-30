@@ -394,31 +394,62 @@
 
         <section id="paiement" class="py-20 bg-gradient-warm" aria-labelledby="paiement-heading">
             <div class="max-w-5xl mx-auto px-6">
-                <h2 id="paiement-heading" class="text-4xl lg:text-5xl font-serif font-bold text-center mb-4">💳 Paiement sécurisé</h2>
-                <p class="text-center text-[color:var(--muted-foreground)] mb-10">Règlement simple, après la première séance ou en début de mois pour les packs</p>
+                <h2 id="paiement-heading" class="text-4xl lg:text-5xl font-serif font-bold text-center mb-4">
+                    💳 Paiement sécurisé
+                </h2>
+
+                <p class="text-center text-[color:var(--muted-foreground)] mb-10">
+                    Règlement simple, après la première séance ou en début de mois pour les packs
+                </p>
+
                 <div class="grid md:grid-cols-2 gap-8">
+
+                    <!-- PayPal -->
                     <div class="bg-[color:var(--card)] rounded-3xl p-8 text-center shadow-soft hover:-translate-y-2 transition">
                         <i class="fab fa-paypal text-5xl text-[color:var(--primary)] mb-4"></i>
                         <h3 class="text-2xl font-serif font-semibold mb-2">PayPal</h3>
-                        <p class="text-sm text-[color:var(--muted-foreground)] mb-4">Paiement sécurisé via PayPal</p>
-                        <div class="bg-[color:var(--muted)]/30 p-3 rounded-xl font-mono text-sm break-all mb-4 select-all" id="paypalEmail">yassinelmiloudi31@gmail.com</div>
-                        <button onclick="copyToClipboard('paypalEmail', '✓ Email PayPal copié !')" class="bg-[color:var(--sage)] text-white px-5 py-2 rounded-full text-sm hover:bg-[color:var(--primary)] transition font-semibold">
+
+                        <p class="text-sm text-[color:var(--muted-foreground)] mb-4">
+                            Paiement sécurisé via PayPal
+                        </p>
+
+                        <div class="bg-[color:var(--muted)]/30 p-3 rounded-xl font-mono text-sm break-all mb-4 select-all"
+                            id="paypalEmail">
+                            yassinelmiloudi31@gmail.com
+                        </div>
+
+                        <button onclick="copyToClipboard('paypalEmail', '✓ Email PayPal copié !')"
+                                class="bg-[color:var(--sage)] text-white px-5 py-2 rounded-full text-sm hover:bg-[color:var(--primary)] transition font-semibold">
                             <i class="fas fa-copy"></i> Copier l'email
                         </button>
                     </div>
+
+                    <!-- Virement bancaire -->
                     <div class="bg-[color:var(--card)] rounded-3xl p-8 text-center shadow-soft hover:-translate-y-2 transition">
                         <i class="fas fa-university text-5xl text-[color:var(--primary)] mb-4"></i>
-                        <h3 class="text-2xl font-serif font-semibold mb-2">Virement bancaire</h3>
-                        <p class="text-sm text-[color:var(--muted-foreground)] mb-4">Virement SEPA rapide et gratuit</p>
-                        <div class="bg-[color:var(--muted)]/30 p-3 rounded-xl font-mono text-sm break-all mb-4 select-all" id="rib">FR76 4061 8803 9600 0406 9070 515</div>
-                        <button onclick="copyToClipboard('rib', '✓ RIB copié !')" class="bg-[color:var(--sage)] text-white px-5 py-2 rounded-full text-sm hover:bg-[color:var(--primary)] transition font-semibold">
-                            <i class="fas fa-copy"></i> Copier le RIB
-                        </button>
+
+                        <h3 class="text-2xl font-serif font-semibold mb-2">
+                            Virement bancaire
+                        </h3>
+
+                        <p class="text-sm text-[color:var(--muted-foreground)] mb-4">
+                            Virement SEPA disponible sur demande.
+                        </p>
+
+                        <div class="bg-[color:var(--muted)]/30 p-4 rounded-xl text-sm text-[color:var(--muted-foreground)]">
+                            🔒 Pour recevoir le RIB, merci de me contacter directement après réservation
+                            (WhatsApp ou email).
+                        </div>
                     </div>
+
                 </div>
+
                 <div class="text-center mt-8 p-4 bg-white/50 rounded-2xl max-w-lg mx-auto">
                     <i class="fas fa-shield-alt text-[color:var(--sage)] mr-2"></i>
-                    <span class="text-sm text-[color:var(--muted-foreground)]">Paiement après la première séance, ou au début du mois pour les packs. <strong>Zéro risque.</strong></span>
+                    <span class="text-sm text-[color:var(--muted-foreground)]">
+                        Paiement après la première séance, ou au début du mois pour les packs.
+                        <strong>Zéro risque.</strong>
+                    </span>
                 </div>
             </div>
         </section>
