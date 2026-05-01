@@ -1,96 +1,78 @@
-// js/script.js
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== 1. Navigation mobile accessible =====
+
+    // ---------- MENU MOBILE ----------
     const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    const navAnchors = navLinks.querySelectorAll('a[href^="#"]');
+    const mainNav = document.getElementById('mainNav');
+    const navLinks = mainNav.querySelectorAll('a[href^="#"]');
 
     function openMenu() {
-        navLinks.classList.add('active');
+        mainNav.classList.add('active');
         menuToggle.setAttribute('aria-expanded', 'true');
-        menuToggle.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i>';
         document.body.style.overflow = 'hidden';
-        // Focus le premier lien
-        setTimeout(() => navAnchors[0]?.focus(), 100);
     }
-
     function closeMenu() {
-        navLinks.classList.remove('active');
+        mainNav.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
         document.body.style.overflow = '';
-        menuToggle.focus();
     }
 
     menuToggle.addEventListener('click', () => {
-        if (navLinks.classList.contains('active')) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
+        mainNav.classList.contains('active') ? closeMenu() : openMenu();
     });
 
-    // Fermer le menu quand on clique sur un lien
-    navAnchors.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                closeMenu();
-            }
-        });
+    navLinks.forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && mainNav.classList.contains('active')) closeMenu();
     });
 
-    // Fermer avec Echap
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-            closeMenu();
-        }
-    });
-
-    // ===== 2. Smooth scroll (compatible avec le menu) =====
+    // ---------- SMOOTH SCROLL (avec offset header) ----------
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
+            if (!target) return;
+            e.preventDefault();
+            const headerHeight = document.querySelector('header').offsetHeight;
+            window.scrollTo({
+                top: target.offsetTop - headerHeight - 20,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // ---------- ACCORDÉON FAQ (details) ----------
+    document.querySelectorAll('.faq-item').forEach(details => {
+        details.addEventListener('toggle', () => {
+            if (details.open) {
+                // Fermer les autres
+                document.querySelectorAll('.faq-item[open]').forEach(other => {
+                    if (other !== details) other.open = false;
                 });
             }
         });
     });
 
-    // ===== 3. Leçons pliables =====
-    window.toggleLesson = function(button) {
-        const panel = button.nextElementSibling;
-        const isOpen = panel.classList.contains('open');
-        const icon = button.querySelector('.fa-chevron-down');
-
-        // Ferme tous les autres
-        document.querySelectorAll('.lesson-panel.open').forEach(p => {
-            if (p !== panel) p.classList.remove('open');
+    // ---------- LEÇONS ACCORDÉON ----------
+    document.querySelectorAll('.lesson-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lesson = btn.closest('.lesson');
+            const isOpen = lesson.hasAttribute('open');
+            // Ferme les autres leçons
+            document.querySelectorAll('.lesson[open]').forEach(l => l.removeAttribute('open'));
+            if (!isOpen) lesson.setAttribute('open', '');
         });
-        document.querySelectorAll('.fa-chevron-down').forEach(i => {
-            if (i !== icon) i.style.transform = 'rotate(0deg)';
-        });
+    });
 
-        panel.classList.toggle('open');
-        button.setAttribute('aria-expanded', !isOpen);
-        icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-    };
+    // ---------- COPY TO CLIPBOARD + TOAST ----------
+    const toast = document.getElementById('toast');
+    let toastTimer;
 
-    // ===== 4. Toast notification =====
     window.copyToClipboard = function(elementId, message) {
-        const element = document.getElementById(elementId);
-        const text = element?.textContent || element?.innerText || '';
-        navigator.clipboard.writeText(text.trim()).then(() => {
-            showToast(message);
-        }).catch(() => {
-            // Fallback pour contextes non sécurisés
+        const el = document.getElementById(elementId);
+        const text = el?.textContent.trim();
+        navigator.clipboard.writeText(text).then(() => showToast(message)).catch(() => {
+            // Fallback
             const textarea = document.createElement('textarea');
-            textarea.value = text.trim();
+            textarea.value = text;
             document.body.appendChild(textarea);
             textarea.select();
             document.execCommand('copy');
@@ -100,153 +82,124 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.querySelector('span').textContent = message;
+        toast.textContent = message;
         toast.classList.add('show');
-        clearTimeout(toast._timeout);
-        toast._timeout = setTimeout(() => {
-            toast.classList.remove('show');
-        }, 2500);
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
     }
 
-    // ===== 5. Formulaire de réservation =====
-    const bookingForm = document.getElementById('bookingForm');
-    bookingForm.addEventListener('submit', function(e) {
+    // ---------- FORMULAIRE DE RÉSERVATION (WhatsApp) ----------
+    const form = document.getElementById('bookingForm');
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
-        let valid = true;
+        if (!validateForm()) return;
 
-        // Nettoyage des erreurs précédentes
-        bookingForm.querySelectorAll('.error').forEach(field => field.classList.remove('error'));
-        bookingForm.querySelectorAll('.error-msg').forEach(msg => msg.remove());
+        const fullname = document.getElementById('fullname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const courseType = document.getElementById('courseType').value;
+        const phone = document.getElementById('phone').value.replace(/[\s.-]/g, '');
+        const message = document.getElementById('message').value.trim() || 'Non spécifié';
 
-        const fullname = document.getElementById('fullname');
-        const email = document.getElementById('email');
-        const courseType = document.getElementById('courseType');
-        const phone = document.getElementById('phone');
+        const text = `Bonjour Yassine, je souhaite réserver un cours.\n\nNom : ${fullname}\nEmail : ${email}\nFormule : ${courseType}\nTéléphone : ${phone}\nMessage : ${message}`;
+        const whatsappURL = `https://wa.me/33758648161?text=${encodeURIComponent(text)}`;
 
-        // Validation nom
-        if (!fullname.value.trim() || fullname.value.trim().length < 2) {
-            markError(fullname, 'Veuillez entrer votre nom complet');
-            valid = false;
-        }
-
-        // Validation email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email.value.trim() || !emailRegex.test(email.value)) {
-            markError(email, 'Veuillez entrer un email valide');
-            valid = false;
-        }
-
-        // Validation type de cours
-        if (!courseType.value) {
-            markError(courseType, 'Veuillez choisir une formule');
-            valid = false;
-        }
-
-        // Validation téléphone
-        const phoneRegex = /^(\+33|0)[1-9](\d{2}){4}$/;
-        const phoneClean = phone.value.replace(/[\s.-]/g, '');
-        if (!phoneClean || !phoneRegex.test(phoneClean)) {
-            markError(phone, 'Veuillez entrer un numéro de téléphone valide');
-            valid = false;
-        }
-
-        if (!valid) {
-            // Scroll au premier champ en erreur
-            bookingForm.querySelector('.error')?.focus();
-            return;
-        }
-
-        // Construction du message WhatsApp
-        const message = encodeURIComponent(
-            `Bonjour Yassine, je souhaite réserver un cours.\n\n` +
-            `Nom : ${fullname.value.trim()}\n` +
-            `Email : ${email.value.trim()}\n` +
-            `Formule : ${courseType.value}\n` +
-            `Téléphone : ${phone.value.trim()}\n` +
-            `Message : ${document.getElementById('message')?.value.trim() || 'Non spécifié'}`
-        );
-        const whatsappURL = `https://wa.me/33758648161?text=${message}`;
-
-        // Feedback visuel
-        const submitBtn = bookingForm.querySelector('button[type="submit"]');
+        const submitBtn = form.querySelector('button[type="submit"]');
         const originalHTML = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
         submitBtn.disabled = true;
 
-        // Redirection WhatsApp
         setTimeout(() => {
             window.open(whatsappURL, '_blank');
             submitBtn.innerHTML = originalHTML;
             submitBtn.disabled = false;
-            bookingForm.reset();
-            showToast('✓ Redirection vers WhatsApp...');
-        }, 800);
+            form.reset();
+            clearErrors();
+        }, 600);
     });
 
-    function markError(field, message) {
-        field.classList.add('error');
-        const errorMsg = document.createElement('span');
-        errorMsg.className = 'error-msg text-xs text-[--destructive] mt-1 block';
-        errorMsg.textContent = message;
-        field.parentNode.appendChild(errorMsg);
+    function validateForm() {
+        let valid = true;
+        clearErrors();
+
+        const fullname = document.getElementById('fullname');
+        if (!fullname.value.trim() || fullname.value.trim().length < 2) {
+            showError(fullname, 'Nom requis (min. 2 caractères)');
+            valid = false;
+        }
+
+        const email = document.getElementById('email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.value.trim() || !emailRegex.test(email.value)) {
+            showError(email, 'Email valide requis');
+            valid = false;
+        }
+
+        const courseType = document.getElementById('courseType');
+        if (!courseType.value) {
+            showError(courseType, 'Veuillez choisir une formule');
+            valid = false;
+        }
+
+        const phone = document.getElementById('phone');
+        const phoneClean = phone.value.replace(/[\s.-]/g, '');
+        const phoneRegex = /^(\+33|0)[1-9](\d{2}){4}$/;
+        if (!phoneClean || !phoneRegex.test(phoneClean)) {
+            showError(phone, 'Téléphone valide requis (format français)');
+            valid = false;
+        }
+
+        if (!valid) {
+            form.querySelector('.error')?.focus();
+        }
+        return valid;
+    }
+
+    function showError(field, message) {
+        const group = field.closest('.form-group');
+        group.classList.add('error');
+        group.querySelector('.error-msg').textContent = message;
         field.addEventListener('input', () => {
-            field.classList.remove('error');
-            const msg = field.parentNode.querySelector('.error-msg');
-            if (msg) msg.remove();
+            group.classList.remove('error');
+            group.querySelector('.error-msg').textContent = '';
         }, { once: true });
     }
 
-    // ===== 6. Floating CTA =====
-    const floatingCta = document.getElementById('floatingCta');
-    const reservationSection = document.getElementById('reservation');
-    
-    function updateFloatingCta() {
-        if (!reservationSection) return;
-        const rect = reservationSection.getBoundingClientRect();
-        // Afficher si la section réservation n'est pas dans le viewport
-        if (rect.top > window.innerHeight || rect.bottom < 0) {
-            floatingCta.classList.add('visible');
-        } else {
-            floatingCta.classList.remove('visible');
-        }
+    function clearErrors() {
+        form.querySelectorAll('.form-group.error').forEach(g => g.classList.remove('error'));
+        form.querySelectorAll('.error-msg').forEach(span => span.textContent = '');
     }
 
-    window.addEventListener('scroll', updateFloatingCta, { passive: true });
-    updateFloatingCta();
+    // ---------- FLOATING CTA ----------
+    const floatingCta = document.getElementById('floatingCta');
+    const reservationSection = document.getElementById('reservation');
+    window.addEventListener('scroll', () => {
+        if (!reservationSection) return;
+        const rect = reservationSection.getBoundingClientRect();
+        const visible = (rect.top > window.innerHeight || rect.bottom < 0);
+        floatingCta.classList.toggle('visible', visible);
+    }, { passive: true });
 
-    // ===== 7. Animation au scroll (fade-up) =====
-    const animatedElements = document.querySelectorAll('.fade-up, [class*="hover:-translate"]');
+    // ---------- ANIMATION AU SCROLL (reveal) ----------
+    const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    revealElements.forEach(el => observer.observe(el));
 
-    animatedElements.forEach(el => {
-        if (!el.classList.contains('fade-up')) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        }
-        observer.observe(el);
-    });
-
-    // ===== 8. Packs – sélection visuelle =====
+    // ---------- PACKS : pré-remplir la sélection dans le formulaire ----------
     document.querySelectorAll('.pack-radio').forEach(radio => {
         radio.addEventListener('change', function() {
-            // Mise à jour visuelle déjà gérée par CSS
-            // On pourrait pré-remplir le formulaire
-            const courseType = document.getElementById('courseType');
-            if (this.id === 'pack-unite') courseType.value = '';
-            if (this.id === 'pack-5') courseType.value = 'Pack 5 cours (45€)';
-            if (this.id === 'pack-10') courseType.value = 'Pack 10 cours (80€)';
+            const select = document.getElementById('courseType');
+            if (this.id === 'pack-unite') select.value = '';
+            if (this.id === 'pack-5') select.value = 'Pack 5 cours (45€)';
+            if (this.id === 'pack-10') select.value = 'Pack 10 cours (80€)';
         });
     });
 
-    console.log('✨ Nour Alarabiya – interface modernisée et prête');
+    console.log('✨ Yassine Darija – Expérience 10/10 prête.');
 });

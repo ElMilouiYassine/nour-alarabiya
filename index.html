@@ -2,530 +2,445 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cours d'arabe et de darija marocaine avec Yassine, professeur originaire de Fès et basé à Paris. Paiement après le 1er cours ! Méthode progressive. 10€/h en ligne.">
-    <meta name="keywords" content="cours arabe Paris, apprendre darija, professeur arabe maroc, cours arabe en ligne, Yassine, darija marocaine, paiement après cours">
+    <meta name="keywords" content="cours arabe Paris, apprendre darija, professeur arabe maroc, cours arabe en ligne, Yassine, darija marocaine">
     <meta name="author" content="Yassine">
     <meta name="robots" content="index, follow">
-    <title>Nour Alarabiya | Cours d'Arabe & Darija avec Yassine | Paiement après le 1er cours</title>
+    <title>Yassine Darija | Cours d’Arabe & Darija</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
 
-    
-    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Styles personnalisés -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header class="sticky top-0 z-50 bg-[color:var(--background)]/90 backdrop-blur-xl border-b border-[color:var(--border)]" role="banner">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-serif font-bold text-[color:var(--primary)]" aria-label="Nour Alarabiya - Accueil">
-                <i class="fas fa-mosque mr-2" aria-hidden="true"></i> Nour Alarabiya
+<body class="font-body bg-cream text-foreground">
+
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="images/icon.png" alt="Logo Yassine Darija" class="logo-img">
+                <span class="logo-text">Yassine Darija</span>
             </a>
-            <button id="menuToggle" class="lg:hidden text-2xl text-[color:var(--primary)] p-2 rounded-lg hover:bg-[color:var(--muted)] transition" aria-label="Menu de navigation" aria-expanded="false">
-                <i class="fas fa-bars" aria-hidden="true"></i>
+
+            <button id="menuToggle" class="menu-toggle" aria-label="Menu de navigation" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </button>
-            <nav id="navLinks" class="fixed lg:static top-20 left-[-100%] lg:left-auto w-4/5 lg:w-auto h-[calc(100vh-80px)] lg:h-auto bg-[color:var(--background)] lg:bg-transparent flex flex-col lg:flex-row items-center justify-center lg:justify-normal gap-6 lg:gap-8 transition-all duration-300 z-40 shadow-soft lg:shadow-none" aria-label="Navigation principale">
-                <a href="#cours" class="hover:text-[color:var(--primary)] transition font-medium">Programmes</a>
-                <a href="#lecons" class="hover:text-[color:var(--primary)] transition font-medium">Leçons gratuites</a>
-                <a href="#packs" class="hover:text-[color:var(--primary)] transition font-medium">Packs</a>
-                <a href="#pourquoi-moi" class="hover:text-[color:var(--primary)] transition font-medium">Pourquoi moi</a>
-                <a href="#temoignages" class="hover:text-[color:var(--primary)] transition font-medium">Avis</a>
-                <a href="#faq" class="hover:text-[color:var(--primary)] transition font-medium">FAQ</a>
-                <a href="https://wa.me/33758648161" class="bg-[#25D366] text-white px-5 py-2 rounded-full hover:scale-105 transition flex items-center gap-2 font-semibold shadow-md" aria-label="Contacter via WhatsApp">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+
+            <nav id="mainNav" class="main-nav" aria-label="Navigation principale">
+                <a href="#cours" class="nav-link">Programmes</a>
+                <a href="#lecons" class="nav-link">Leçons gratuites</a>
+                <a href="#packs" class="nav-link">Packs</a>
+                <a href="#pourquoi-moi" class="nav-link">Pourquoi moi</a>
+                <a href="#temoignages" class="nav-link">Avis</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="https://wa.me/33758648161" class="btn btn-whatsapp-nav">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="max-w-6xl mx-auto px-6 py-16 lg:py-24 hero-grid grid lg:grid-cols-2 gap-12 items-center" aria-labelledby="hero-heading">
-            <div class="fade-up">
-                <!-- Badge confiance : paiement après le cours -->
-                <div class="inline-flex items-center gap-2 bg-[color:var(--sage)]/10 text-[color:var(--sage)] px-4 py-2 rounded-full text-sm font-bold mb-4">
-                    <i class="fas fa-shield-alt" aria-hidden="true"></i> PAIEMENT APRÈS LE 1ER COURS
-                </div>
-                <div class="inline-flex items-center gap-2 bg-[color:var(--primary)]/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-[color:var(--primary)] mb-6">
-                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Yassine – originaire de Fès, basé à Paris
-                </div>
+    <!-- Main -->
+    <main id="main-content">
+        <!-- Hero -->
+        <section class="hero container" aria-labelledby="hero-heading">
+            <div class="hero-content reveal">
+                <span class="badge">
+                    <i class="fas fa-shield-alt"></i> PAIEMENT APRÈS LE 1ER COURS
+                </span>
+                <span class="badge badge-location">
+                    <i class="fas fa-map-marker-alt"></i> Yassine – Fès / Paris
+                </span>
 
-                <h1 id="hero-heading" class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-                    La Darija <span class="text-[color:var(--primary)]">avec le cœur</span>
+                <h1 id="hero-heading">
+                    La Darija <span class="text-gold">avec le cœur</span>
                 </h1>
-                <p class="text-lg text-[color:var(--muted-foreground)] mb-4">
-                    Je m'appelle <strong>Yassine</strong>, natif de Fès et aujourd'hui à Paris.
-                    Je vous enseigne la darija marocaine et l'arabe classique avec une méthode douce et progressive.
-                </p>
-                <div class="flex flex-wrap items-center gap-6 mb-6">
-                    <div class="flex items-center gap-1" aria-label="Note de 4.9 sur 5 basée sur 18 avis">
-                        <i class="fas fa-star text-yellow-500" aria-hidden="true"></i>
-                        <i class="fas fa-star text-yellow-500" aria-hidden="true"></i>
-                        <i class="fas fa-star text-yellow-500" aria-hidden="true"></i>
-                        <i class="fas fa-star text-yellow-500" aria-hidden="true"></i>
-                        <i class="fas fa-star-half-alt text-yellow-500" aria-hidden="true"></i>
-                        <span class="ml-2 text-sm font-semibold">4.9/5 (18 avis)</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-sm">
-                        <i class="fas fa-user-graduate text-[color:var(--primary)]" aria-hidden="true"></i>
-                        <span>+150 élèves accompagnés</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-sm">
-                        <i class="fas fa-clock text-[color:var(--sage)]" aria-hidden="true"></i>
-                        <span>+1200 heures de cours</span>
-                    </div>
-                </div>
-                <div class="inline-flex flex-wrap items-center gap-4 bg-white rounded-full px-6 py-3 shadow-soft mb-8">
-                    <span class="text-3xl font-bold text-[color:var(--destructive)]">10€</span>
-                    <span class="text-[color:var(--muted-foreground)]">/h en ligne</span>
-                    <span class="w-px h-6 bg-[color:var(--gold)]" aria-hidden="true"></span>
-                    <span><i class="fas fa-home text-[color:var(--primary)]" aria-hidden="true"></i> 15€/h à domicile (Paris)</span>
-                </div>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#reservation" class="bg-[color:var(--primary)] text-white px-8 py-3 rounded-full font-semibold shadow-md hover:-translate-y-1 transition flex items-center gap-2" aria-label="Réserver mon premier cours">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i> Réserver mon 1er cours
-                    </a>
-                    <a href="#lecons" class="border-2 border-[color:var(--primary)] text-[color:var(--primary)] px-8 py-3 rounded-full font-semibold hover:bg-[color:var(--primary)] hover:text-white transition flex items-center gap-2" aria-label="Voir les cours gratuits">
-                        <i class="fas fa-book-open" aria-hidden="true"></i> Voir les cours gratuits
-                    </a>
-                </div>
-            </div>
-            <div class="flex justify-center fade-up" style="transition-delay: 0.2s;">
-                <div class="bg-gradient-warm p-12 morph-animation shadow-elegant" aria-hidden="true">
-                    <i class="fas fa-feather-alt text-8xl text-[color:var(--primary)]"></i>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-12 bg-gradient-warm" aria-labelledby="how-it-works-heading">
-            <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 id="how-it-works-heading" class="text-3xl lg:text-4xl font-serif font-bold mb-4">🚀 Comment ça marche ?</h2>
-                <p class="text-[color:var(--muted-foreground)] mb-10 max-w-2xl mx-auto">3 étapes simples pour commencer, <strong>sans risque</strong>.</p>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition relative">
-                        <div class="absolute -top-4 -left-4 w-10 h-10 bg-[color:var(--primary)] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md" aria-hidden="true">1</div>
-                        <i class="fas fa-calendar-check text-4xl text-[color:var(--primary)] mb-4" aria-hidden="true"></i>
-                        <h3 class="text-xl font-serif font-semibold mb-2">Réservez votre 1er cours</h3>
-                        <p class="text-[color:var(--muted-foreground)] text-sm">Remplissez le formulaire, je vous contacte sous 2h pour fixer un créneau.</p>
-                    </div>
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition relative">
-                        <div class="absolute -top-4 -left-4 w-10 h-10 bg-[color:var(--primary)] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md" aria-hidden="true">2</div>
-                        <i class="fas fa-laptop-house text-4xl text-[color:var(--primary)] mb-4" aria-hidden="true"></i>
-                        <h3 class="text-xl font-serif font-semibold mb-2">Suivez votre première séance</h3>
-                        <p class="text-[color:var(--muted-foreground)] text-sm">Cours de 30-45 min : évaluation de votre niveau, définition de vos objectifs. <strong>Paiement uniquement après la séance.</strong></p>
-                    </div>
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition relative">
-                        <div class="absolute -top-4 -left-4 w-10 h-10 bg-[color:var(--primary)] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md" aria-hidden="true">3</div>
-                        <i class="fas fa-road text-4xl text-[color:var(--primary)] mb-4" aria-hidden="true"></i>
-                        <h3 class="text-xl font-serif font-semibold mb-2">Choisissez votre parcours</h3>
-                        <p class="text-[color:var(--muted-foreground)] text-sm">À l'unité ou en pack, en ligne ou à domicile. Vous avancez à votre rythme, en toute confiance.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pourquoi-moi" class="py-20 bg-gradient-warm pattern-zellige" aria-labelledby="pourquoi-moi-heading">
-            <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 id="pourquoi-moi-heading" class="text-4xl lg:text-5xl font-serif font-bold mb-4">Pourquoi choisir <span class="text-[color:var(--primary)]">Yassine</span> ?</h2>
-                <p class="text-[color:var(--muted-foreground)] mb-12 max-w-2xl mx-auto">Une méthode unique qui allie authenticité marocaine et pédagogie française.</p>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition">
-                        <div class="w-16 h-16 bg-[color:var(--primary)]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-mosque text-2xl text-[color:var(--primary)]" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-serif font-semibold mb-2">Racines marocaines</h3>
-                        <p class="text-[color:var(--muted-foreground)] text-sm">Natif de Fès, je connais la darija authentique, ses expressions du quotidien et ses subtilités culturelles.</p>
-                    </div>
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition">
-                        <div class="w-16 h-16 bg-[color:var(--primary)]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-chalkboard-user text-2xl text-[color:var(--primary)]" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-serif font-semibold mb-2">Pédagogie bienveillante</h3>
-                        <p class="text-[color:var(--muted-foreground)] text-sm">Méthode progressive, patiente, adaptée à vos objectifs. Pas de pression, on avance ensemble.</p>
-                    </div>
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition">
-                        <div class="w-16 h-16 bg-[color:var(--primary)]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-calendar-alt text-2xl text-[color:var(--primary)]" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="text-xl font-serif font-semibold mb-2">Sans engagement</h3>
-                        <p class="text-[color:var(--muted-foreground)] text-sm">Pas d'abonnement, vous payez à la séance ou en pack. Liberté totale, flexibilité garantie.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="cours" class="py-20" aria-labelledby="cours-heading">
-            <div class="max-w-6xl mx-auto px-6">
-                <h2 id="cours-heading" class="text-4xl lg:text-5xl font-serif font-bold text-center mb-4">Des parcours <span class="text-[color:var(--primary)]">sur mesure</span></h2>
-                <p class="text-center text-[color:var(--muted-foreground)] mb-12">Que vous soyez débutant ou passionné, un programme taillé pour vous.</p>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft hover:-translate-y-3 transition text-center">
-                        <i class="fas fa-comments text-4xl text-[color:var(--gold)] mb-4" aria-hidden="true"></i>
-                        <h3 class="text-2xl font-serif font-semibold mb-3">Darija marocaine</h3>
-                        <p class="text-[color:var(--muted-foreground)]">La langue du quotidien pour dialoguer, voyager et créer du lien avec la culture marocaine.</p>
-                        <div class="mt-4 text-sm text-[color:var(--primary)] font-semibold">⭐ Débutants bienvenus</div>
-                    </div>
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft hover:-translate-y-3 transition text-center">
-                        <i class="fas fa-book-open text-4xl text-[color:var(--gold)] mb-4" aria-hidden="true"></i>
-                        <h3 class="text-2xl font-serif font-semibold mb-3">Arabe classique</h3>
-                        <p class="text-[color:var(--muted-foreground)]">Alphabet, grammaire, vocabulaire, compréhension de textes et expression écrite.</p>
-                        <div class="mt-4 text-sm text-[color:var(--primary)] font-semibold">📖 Lecture & écriture</div>
-                    </div>
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft hover:-translate-y-3 transition text-center">
-                        <i class="fas fa-graduation-cap text-4xl text-[color:var(--gold)] mb-4" aria-hidden="true"></i>
-                        <h3 class="text-2xl font-serif font-semibold mb-3">Soutien scolaire</h3>
-                        <p class="text-[color:var(--muted-foreground)]">Aide aux devoirs, préparation aux examens, remise à niveau en arabe.</p>
-                        <div class="mt-4 text-sm text-[color:var(--primary)] font-semibold">👨‍🎓 Tous niveaux</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="packs" class="py-20 bg-gradient-warm" aria-labelledby="packs-heading">
-            <div class="max-w-5xl mx-auto px-6">
-                <h2 id="packs-heading" class="text-4xl lg:text-5xl font-serif font-bold text-center mb-4">📦 Packs avantageux</h2>
-                <p class="text-center text-[color:var(--muted-foreground)] mb-10">Plus vous prenez de cours, moins vous payez</p>
-                <div class="grid md:grid-cols-3 gap-6 mb-8" role="radiogroup" aria-label="Choix du pack">
-                    <input type="radio" name="pack" id="pack-unite" class="pack-radio hidden" checked>
-                    <label for="pack-unite" class="bg-[color:var(--card)] rounded-3xl p-6 text-center shadow-soft hover:-translate-y-2 transition cursor-pointer border-2 border-transparent">
-                        <h3 class="text-xl font-serif font-bold mb-2">À l'unité</h3>
-                        <div class="text-4xl font-bold text-[color:var(--primary)] mb-2">10€</div>
-                        <p class="text-sm text-[color:var(--muted-foreground)] mb-2">/ séance (1h)</p>
-                        <span class="text-xs text-[color:var(--primary)] font-semibold">Flexibilité maximale</span>
-                    </label>
-                    <input type="radio" name="pack" id="pack-5" class="pack-radio hidden">
-                    <label for="pack-5" class="bg-[color:var(--card)] rounded-3xl p-6 text-center shadow-elegant hover:-translate-y-2 transition cursor-pointer border-2 border-transparent relative overflow-hidden">
-                        <div class="absolute top-4 right-4 bg-[color:var(--gold)] text-white text-xs px-2 py-1 rounded-full">⭐ Populaire</div>
-                        <h3 class="text-xl font-serif font-bold mb-2">Pack 5 cours</h3>
-                        <div class="text-4xl font-bold text-[color:var(--primary)] mb-1">45€</div>
-                        <p class="text-sm line-through text-[color:var(--muted-foreground)]">50€</p>
-                        <p class="text-sm text-[color:var(--sage)] font-semibold mb-2">Économisez 10%</p>
-                    </label>
-                    <input type="radio" name="pack" id="pack-10" class="pack-radio hidden">
-                    <label for="pack-10" class="bg-[color:var(--card)] rounded-3xl p-6 text-center shadow-soft hover:-translate-y-2 transition cursor-pointer border-2 border-transparent">
-                        <h3 class="text-xl font-serif font-bold mb-2">Pack 10 cours</h3>
-                        <div class="text-4xl font-bold text-[color:var(--primary)] mb-1">80€</div>
-                        <p class="text-sm line-through text-[color:var(--muted-foreground)]">100€</p>
-                        <p class="text-sm text-[color:var(--sage)] font-semibold mb-2">Économisez 20%</p>
-                    </label>
-                </div>
-                <p class="text-center text-sm text-[color:var(--muted-foreground)] mt-4">*Cours à domicile (Paris) : 15€/h ou pack 5 cours à 70€</p>
-            </div>
-        </section>
-
-        <section id="lecons" class="py-20" aria-labelledby="lecons-heading">
-            <div class="max-w-4xl mx-auto px-6">
-                <h2 id="lecons-heading" class="text-4xl lg:text-5xl font-serif font-bold text-center mb-4">📖 Leçons gratuites</h2>
-                <p class="text-center text-[color:var(--muted-foreground)] mb-10">Découvrez ma méthode sans engagement avec ces extraits de cours.</p>
-
-                <div class="bg-[color:var(--card)] rounded-3xl shadow-soft mb-6 overflow-hidden">
-                    <button onclick="toggleLesson(this)" class="w-full bg-[color:var(--primary)] text-white px-6 py-4 flex justify-between items-center text-left hover:bg-[color:var(--primary-light)] transition" aria-expanded="false">
-                        <h3 class="text-xl font-serif font-semibold"><i class="fas fa-user-plus mr-2" aria-hidden="true"></i> Cours 1 – Se présenter & salutations</h3>
-                        <i class="fas fa-chevron-down transition-transform duration-300" aria-hidden="true"></i>
-                    </button>
-                    <div class="lesson-panel">
-                        <div class="inner">
-                            <div class="px-6 py-6 space-y-4">
-                                <div class="bg-[color:var(--muted)]/30 p-4 rounded-xl text-sm">
-                                    <strong>📌 Note de lecture :</strong><br>
-                                    • 3 = « aïn » (son guttural) • 7 = « ha » (h aspiré) • 9 = « qaf » (q profond) • gh = « r » grasseyé
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-[color:var(--primary)] mb-2">🔤 Se présenter</h4>
-                                    <div class="grid grid-cols-2 gap-2 text-sm bg-white p-3 rounded-xl">
-                                        <div class="font-semibold">Darija</div><div class="font-semibold">Français</div>
-                                        <div>ana smyti ___</div><div>Je m'appelle ___</div>
-                                        <div>smytk (H) / smytki (F)</div><div>ton prénom</div>
-                                        <div>Mtsharfin !</div><div>Enchanté(e) !</div>
-                                        <div>mnin nta ?</div><div>D'où es-tu ?</div>
-                                        <div>ana mn Fransa</div><div>Je suis de France</div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-[color:var(--primary)] mb-2">👋 Les salutations</h4>
-                                    <div class="grid grid-cols-2 gap-2 text-sm bg-white p-3 rounded-xl">
-                                        <div>Salam 3likoum</div><div>Bonjour</div>
-                                        <div>Labas ?</div><div>Comment ça va ?</div>
-                                        <div>Labas, lhamdullah</div><div>Ça va, Dieu merci</div>
-                                        <div>Bslama</div><div>Au revoir</div>
-                                        <div>Tssbah 3la khir</div><div>Bonne nuit</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-[color:var(--card)] rounded-3xl shadow-soft overflow-hidden">
-                    <button onclick="toggleLesson(this)" class="w-full bg-[color:var(--primary)] text-white px-6 py-4 flex justify-between items-center text-left hover:bg-[color:var(--primary-light)] transition" aria-expanded="false">
-                        <h3 class="text-xl font-serif font-semibold"><i class="fas fa-plane mr-2" aria-hidden="true"></i> Cours 5 – Voyage, faux amis & urgences</h3>
-                        <i class="fas fa-chevron-down transition-transform duration-300" aria-hidden="true"></i>
-                    </button>
-                    <div class="lesson-panel">
-                        <div class="inner">
-                            <div class="px-6 py-6 space-y-4">
-                                <div>
-                                    <h4 class="font-semibold text-[color:var(--primary)] mb-2">⚠️ Les faux amis</h4>
-                                    <div class="grid grid-cols-3 gap-2 text-sm bg-white p-3 rounded-xl">
-                                        <div class="font-semibold">Darija</div><div class="font-semibold">Faux sens</div><div class="font-semibold">Vrai sens</div>
-                                        <div>Garro</div><div>gare</div><div>cigarette</div>
-                                        <div>Boussa</div><div>bourse</div><div>bisou</div>
-                                        <div>Cheta</div><div>chute</div><div>pluie</div>
-                                        <div>Fabor</div><div>faveur</div><div>gratuit</div>
-                                        <div>Zbel</div><div>zèbre</div><div>poubelle</div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-[color:var(--primary)] mb-2">🚨 Urgences</h4>
-                                    <div class="grid grid-cols-2 gap-2 text-sm bg-white p-3 rounded-xl">
-                                        <div>3awni !</div><div>Aidez-moi !</div>
-                                        <div>Finahd sbitar ?</div><div>Où est l'hôpital ?</div>
-                                        <div>Sraqouli</div><div>On m'a volé</div>
-                                        <div>3ayt l'boliss !</div><div>Appelez la police !</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-8 p-6 bg-[color:var(--card)] rounded-3xl shadow-soft">
-                    <p class="font-semibold text-lg mb-2">📚 Le programme complet comprend 10 cours détaillés :</p>
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm text-[color:var(--muted-foreground)]">
-                        <span>1. Salutations</span>
-                        <span>2. Famille</span>
-                        <span>3. Nourriture</span>
-                        <span>4. Achats</span>
-                        <span>5. Voyage</span>
-                        <span>6. Temps</span>
-                        <span>7. Santé</span>
-                        <span>8. Travail</span>
-                        <span>9. Culture</span>
-                        <span>10. Expressions</span>
-                    </div>
-                    <a href="#reservation" class="inline-block mt-4 bg-[color:var(--primary)] text-white px-6 py-2 rounded-full font-semibold hover:-translate-y-1 transition">
-                        Accéder au programme complet
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="temoignages" class="py-20 bg-gradient-warm" aria-labelledby="temoignages-heading">
-            <div class="max-w-5xl mx-auto px-6">
-                <h2 id="temoignages-heading" class="text-4xl lg:text-5xl font-serif font-bold text-center mb-4">💬 Ils me font confiance</h2>
-                <p class="text-center text-[color:var(--muted-foreground)] mb-10">+150 élèves satisfaits, +1200 heures de cours données</p>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-[color:var(--card)] rounded-2xl p-6 shadow-soft hover:-translate-y-2 transition">
-                        <div class="flex items-center gap-1 mb-3" aria-label="5 étoiles sur 5">
-                            <i class="fas fa-star text-yellow-500"></i><i class="fas fa-star text-yellow-500"></i>
-                            <i class="fas fa-star text-yellow-500"></i><i class="fas fa-star text-yellow-500"></i>
-                            <i class="fas fa-star text-yellow-500"></i>
-                        </div>
-                        <p class="italic text-[color:var(--muted-foreground)]">"Yassine est un professeur patient et pédagogue. J'ai progressé énormément en darija en seulement 3 mois ! Je peux maintenant parler avec ma belle-famille."</p>
-                        <p class="mt-3 font-semibold">— Marie, Paris</p>
-                    </div>
-                    <div class="bg-[color:var(--card)] rounded-2xl p-6 shadow-soft hover:-translate-y-2 transition">
-                        <div class="flex items-center gap-1 mb-3" aria-label="5 étoiles sur 5">
-                            <i class="fas fa-star text-yellow-500"></i><i class="fas fa-star text-yellow-500"></i>
-                            <i class="fas fa-star text-yellow-500"></i><i class="fas fa-star text-yellow-500"></i>
-                            <i class="fas fa-star text-yellow-500"></i>
-                        </div>
-                        <p class="italic text-[color:var(--muted-foreground)]">"Les cours sont bien structurés et les exercices pratiques. Je recommande vivement ! La méthode est vraiment progressive et adaptée."</p>
-                        <p class="mt-3 font-semibold">— Thomas, Lyon</p>
-                    </div>
-                    <div class="bg-[color:var(--card)] rounded-2xl p-6 shadow-soft hover:-translate-y-2 transition">
-                        <div class="flex items-center gap-1 mb-3" aria-label="4.5 étoiles sur 5">
-                            <i class="fas fa-star text-yellow-500"></i><i class="fas fa-star text-yellow-500"></i>
-                            <i class="fas fa-star text-yellow-500"></i><i class="fas fa-star text-yellow-500"></i>
-                            <i class="fas fa-star-half-alt text-yellow-500"></i>
-                        </div>
-                        <p class="italic text-[color:var(--muted-foreground)]">"Excellente approche, Yassine s'adapte vraiment à votre rythme. Le paiement après le premier cours m'a tout de suite mis en confiance."</p>
-                        <p class="mt-3 font-semibold">— Sophie, Marseille</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="py-20" aria-labelledby="faq-heading">
-            <div class="max-w-3xl mx-auto px-6">
-                <h2 id="faq-heading" class="text-4xl lg:text-5xl font-serif font-bold text-center mb-4">❓ Foire aux questions</h2>
-                <p class="text-center text-[color:var(--muted-foreground)] mb-10">Tout ce que vous devez savoir avant de commencer</p>
-                <div class="space-y-4">
-                    <details class="bg-[color:var(--card)] rounded-2xl shadow-soft group">
-                        <summary class="font-semibold cursor-pointer p-5 flex justify-between items-center list-none">
-                            Faut-il savoir lire l'arabe pour commencer ?
-                            <i class="fas fa-chevron-down transition-transform duration-300 group-open:rotate-180 text-[color:var(--primary)]"></i>
-                        </summary>
-                        <p class="px-5 pb-5 text-[color:var(--muted-foreground)] text-sm">Non, pas du tout ! On commence par la phonétique et l'oral avec une transcription adaptée. La lecture et l'écriture viennent plus tard, uniquement si vous le souhaitez.</p>
-                    </details>
-                    <details class="bg-[color:var(--card)] rounded-2xl shadow-soft group">
-                        <summary class="font-semibold cursor-pointer p-5 flex justify-between items-center list-none">
-                            Comment se déroule le premier cours ?
-                            <i class="fas fa-chevron-down transition-transform duration-300 group-open:rotate-180 text-[color:var(--primary)]"></i>
-                        </summary>
-                        <p class="px-5 pb-5 text-[color:var(--muted-foreground)] text-sm">Vous remplissez le formulaire, je vous contacte sous 2h. Nous fixons un créneau, vous suivez votre première séance, et <strong>vous ne payez qu'à l'issue du cours</strong>. Aucun risque, c'est une relation de confiance.</p>
-                    </details>
-                    <details class="bg-[color:var(--card)] rounded-2xl shadow-soft group">
-                        <summary class="font-semibold cursor-pointer p-5 flex justify-between items-center list-none">
-                            Peut-on annuler ou reporter une séance ?
-                            <i class="fas fa-chevron-down transition-transform duration-300 group-open:rotate-180 text-[color:var(--primary)]"></i>
-                        </summary>
-                        <p class="px-5 pb-5 text-[color:var(--muted-foreground)] text-sm">Oui, vous pouvez annuler ou reporter gratuitement jusqu'à 24h avant la séance. Passé ce délai, la séance est due. En cas d'imprévu de ma part, la séance est bien sûr reportée sans frais.</p>
-                    </details>
-                    <details class="bg-[color:var(--card)] rounded-2xl shadow-soft group">
-                        <summary class="font-semibold cursor-pointer p-5 flex justify-between items-center list-none">
-                            Faites-vous des cours en ligne ou en présentiel ?
-                            <i class="fas fa-chevron-down transition-transform duration-300 group-open:rotate-180 text-[color:var(--primary)]"></i>
-                        </summary>
-                        <p class="px-5 pb-5 text-[color:var(--muted-foreground)] text-sm">Les deux ! En ligne par visio (Zoom, Google Meet ou WhatsApp) partout dans le monde, ou à domicile si vous habitez Paris (15€/h).</p>
-                    </details>
-                    <details class="bg-[color:var(--card)] rounded-2xl shadow-soft group">
-                        <summary class="font-semibold cursor-pointer p-5 flex justify-between items-center list-none">
-                            Quelle est la différence entre darija et arabe classique ?
-                            <i class="fas fa-chevron-down transition-transform duration-300 group-open:rotate-180 text-[color:var(--primary)]"></i>
-                        </summary>
-                        <p class="px-5 pb-5 text-[color:var(--muted-foreground)] text-sm">La darija est le dialecte parlé au quotidien au Maroc (très utile pour voyager ou communiquer avec des proches). L'arabe classique (ou littéraire) est la langue standard, utilisée à l'écrit, dans les médias, les livres et le Coran. Je vous aide à choisir selon vos objectifs.</p>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <section id="paiement" class="py-20 bg-gradient-warm" aria-labelledby="paiement-heading">
-            <div class="max-w-5xl mx-auto px-6">
-                <h2 id="paiement-heading" class="text-4xl lg:text-5xl font-serif font-bold text-center mb-4">
-                    💳 Paiement sécurisé
-                </h2>
-
-                <p class="text-center text-[color:var(--muted-foreground)] mb-10">
-                    Règlement simple, après la première séance ou en début de mois pour les packs
+                <p class="hero-desc">
+                    Je m'appelle <strong>Yassine</strong>, natif de Fès et installé à Paris.
+                    Je vous enseigne la darija marocaine et l’arabe classique avec une méthode douce et progressive.
                 </p>
 
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="hero-stats">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>4.9/5 (18 avis)</span></div>
+                    <div><i class="fas fa-user-graduate"></i> +150 élèves</div>
+                    <div><i class="fas fa-clock"></i> +1200 h de cours</div>
+                </div>
 
-                    <!-- PayPal -->
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 text-center shadow-soft hover:-translate-y-2 transition">
-                        <i class="fab fa-paypal text-5xl text-[color:var(--primary)] mb-4"></i>
-                        <h3 class="text-2xl font-serif font-semibold mb-2">PayPal</h3>
+                <div class="price-box">
+                    <span class="price">10€</span><span>/h en ligne</span>
+                    <span class="divider"></span>
+                    <span><i class="fas fa-home"></i> 15€/h à domicile (Paris)</span>
+                </div>
 
-                        <p class="text-sm text-[color:var(--muted-foreground)] mb-4">
-                            Paiement sécurisé via PayPal
-                        </p>
+                <div class="hero-buttons">
+                    <a href="#reservation" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Réserver mon 1er cours</a>
+                    <a href="#lecons" class="btn btn-outline"><i class="fas fa-book-open"></i> Cours gratuits</a>
+                </div>
+            </div>
+        </section>
 
-                        <div class="bg-[color:var(--muted)]/30 p-3 rounded-xl font-mono text-sm break-all mb-4 select-all"
-                            id="paypalEmail">
-                            yassinelmiloudi31@gmail.com
+        <!-- Comment ça marche -->
+        <section class="section bg-warm" aria-labelledby="how-heading">
+            <div class="container text-center">
+                <h2 id="how-heading" class="section-title">🚀 Comment ça marche ?</h2>
+                <p class="section-subtitle">3 étapes simples, sans risque.</p>
+                <div class="steps">
+                    <div class="step-card reveal">
+                        <span class="step-number">1</span>
+                        <i class="fas fa-calendar-check step-icon"></i>
+                        <h3>Réservez votre 1er cours</h3>
+                        <p>Remplissez le formulaire, je vous contacte sous 2h pour fixer un créneau.</p>
+                    </div>
+                    <div class="step-card reveal">
+                        <span class="step-number">2</span>
+                        <i class="fas fa-laptop-house step-icon"></i>
+                        <h3>Suivez votre première séance</h3>
+                        <p>Évaluation de votre niveau, définition des objectifs. <strong>Paiement uniquement après la séance.</strong></p>
+                    </div>
+                    <div class="step-card reveal">
+                        <span class="step-number">3</span>
+                        <i class="fas fa-road step-icon"></i>
+                        <h3>Choisissez votre parcours</h3>
+                        <p>À l’unité ou en pack, en ligne ou à domicile. Vous avancez à votre rythme, en toute confiance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pourquoi Yassine -->
+        <section id="pourquoi-moi" class="section" aria-labelledby="why-heading">
+            <div class="container text-center">
+                <h2 id="why-heading" class="section-title">Pourquoi choisir <span class="text-gold">Yassine</span> ?</h2>
+                <p class="section-subtitle">Une méthode unique entre authenticité marocaine et pédagogie française.</p>
+                <div class="why-grid">
+                    <div class="card reveal">
+                        <div class="card-icon"><i class="fas fa-mosque"></i></div>
+                        <h3>Racines marocaines</h3>
+                        <p>Natif de Fès, je connais la darija authentique, ses expressions du quotidien et ses subtilités culturelles.</p>
+                    </div>
+                    <div class="card reveal">
+                        <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+                        <h3>Pédagogie bienveillante</h3>
+                        <p>Méthode progressive, patiente, adaptée à vos objectifs. Pas de pression, on avance ensemble.</p>
+                    </div>
+                    <div class="card reveal">
+                        <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <h3>Sans engagement</h3>
+                        <p>Pas d’abonnement, vous payez à la séance ou en pack. Liberté totale, flexibilité garantie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parcours -->
+        <section id="cours" class="section bg-warm" aria-labelledby="cours-heading">
+            <div class="container text-center">
+                <h2 id="cours-heading" class="section-title">Des parcours <span class="text-gold">sur mesure</span></h2>
+                <p class="section-subtitle">Que vous soyez débutant ou passionné, un programme taillé pour vous.</p>
+                <div class="parcours-grid">
+                    <div class="card reveal">
+                        <i class="fas fa-comments course-icon"></i>
+                        <h3>Darija marocaine</h3>
+                        <p>La langue du quotidien pour dialoguer, voyager et créer du lien avec la culture marocaine.</p>
+                        <span class="badge-outline">⭐ Débutants bienvenus</span>
+                    </div>
+                    <div class="card reveal">
+                        <i class="fas fa-book-open course-icon"></i>
+                        <h3>Arabe classique</h3>
+                        <p>Alphabet, grammaire, vocabulaire, compréhension de textes et expression écrite.</p>
+                        <span class="badge-outline">📖 Lecture & écriture</span>
+                    </div>
+                    <div class="card reveal">
+                        <i class="fas fa-graduation-cap course-icon"></i>
+                        <h3>Soutien scolaire</h3>
+                        <p>Aide aux devoirs, préparation aux examens, remise à niveau en arabe.</p>
+                        <span class="badge-outline">👨‍🎓 Tous niveaux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packs -->
+        <section id="packs" class="section" aria-labelledby="packs-heading">
+            <div class="container text-center">
+                <h2 id="packs-heading" class="section-title">📦 Packs avantageux</h2>
+                <p class="section-subtitle">Plus vous prenez de cours, moins vous payez</p>
+                <div class="packs-grid">
+                    <input type="radio" name="pack" id="pack-unite" class="pack-radio" checked>
+                    <label for="pack-unite" class="pack-card">
+                        <h3>À l'unité</h3>
+                        <div class="pack-price">10€<span>/h</span></div>
+                        <p>Flexibilité maximale</p>
+                    </label>
+
+                    <input type="radio" name="pack" id="pack-5" class="pack-radio">
+                    <label for="pack-5" class="pack-card popular">
+                        <span class="popular-badge">⭐ Populaire</span>
+                        <h3>Pack 5 cours</h3>
+                        <div class="pack-price">45€ <span class="old-price">50€</span></div>
+                        <p class="savings">–10%</p>
+                    </label>
+
+                    <input type="radio" name="pack" id="pack-10" class="pack-radio">
+                    <label for="pack-10" class="pack-card">
+                        <h3>Pack 10 cours</h3>
+                        <div class="pack-price">80€ <span class="old-price">100€</span></div>
+                        <p class="savings">–20%</p>
+                    </label>
+                </div>
+                <p class="note">*Cours à domicile (Paris) : 15€/h ou pack 5 cours à 70€</p>
+            </div>
+        </section>
+
+        <!-- Leçons gratuites -->
+        <section id="lecons" class="section bg-warm" aria-labelledby="lecons-heading">
+            <div class="container">
+                <h2 id="lecons-heading" class="section-title text-center">📖 Leçons gratuites</h2>
+                <p class="section-subtitle text-center">Découvrez ma méthode sans engagement avec ces extraits de cours.</p>
+
+                <!-- Leçon 1 -->
+                <div class="lesson">
+                    <button class="lesson-toggle" aria-expanded="false">
+                        <span><i class="fas fa-user-plus"></i> Cours 1 – Se présenter & salutations</span>
+                        <i class="fas fa-chevron-down lesson-chevron"></i>
+                    </button>
+                    <div class="lesson-content">
+                        <div class="lesson-body">
+                            <div class="transcription-note">
+                                <strong>📌 Note de lecture :</strong> 3 = « aïn », 7 = « ha », 9 = « qaf », gh = « r » grasseyé
+                            </div>
+                            <h4>🔤 Se présenter</h4>
+                            <table class="vocab-table">
+                                <tr><td>ana smyti ___</td><td>Je m'appelle ___</td></tr>
+                                <tr><td>smytk (M) / smytki (F)</td><td>ton prénom</td></tr>
+                                <tr><td>Mtsharfin !</td><td>Enchanté(e) !</td></tr>
+                                <tr><td>mnin nta ?</td><td>D'où es-tu ?</td></tr>
+                                <tr><td>ana mn Fransa</td><td>Je suis de France</td></tr>
+                            </table>
+                            <h4>👋 Les salutations</h4>
+                            <table class="vocab-table">
+                                <tr><td>Salam 3likoum</td><td>Bonjour</td></tr>
+                                <tr><td>Labas ?</td><td>Comment ça va ?</td></tr>
+                                <tr><td>Labas, lhamdullah</td><td>Ça va, Dieu merci</td></tr>
+                                <tr><td>Bslama</td><td>Au revoir</td></tr>
+                                <tr><td>Tssbah 3la khir</td><td>Bonne nuit</td></tr>
+                            </table>
                         </div>
+                    </div>
+                </div>
 
-                        <button onclick="copyToClipboard('paypalEmail', '✓ Email PayPal copié !')"
-                                class="bg-[color:var(--sage)] text-white px-5 py-2 rounded-full text-sm hover:bg-[color:var(--primary)] transition font-semibold">
+                <!-- Leçon 5 -->
+                <div class="lesson">
+                    <button class="lesson-toggle" aria-expanded="false">
+                        <span><i class="fas fa-plane"></i> Cours 5 – Voyage, faux amis & urgences</span>
+                        <i class="fas fa-chevron-down lesson-chevron"></i>
+                    </button>
+                    <div class="lesson-content">
+                        <div class="lesson-body">
+                            <h4>⚠️ Faux amis</h4>
+                            <table class="vocab-table">
+                                <tr><th>Darija</th><th>Faux sens</th><th>Vrai sens</th></tr>
+                                <tr><td>Garro</td><td>gare</td><td>cigarette</td></tr>
+                                <tr><td>Boussa</td><td>bourse</td><td>bisou</td></tr>
+                                <tr><td>Cheta</td><td>chute</td><td>pluie</td></tr>
+                                <tr><td>Fabor</td><td>faveur</td><td>gratuit</td></tr>
+                                <tr><td>Zbel</td><td>zèbre</td><td>poubelle</td></tr>
+                            </table>
+                            <h4>🚨 Urgences</h4>
+                            <table class="vocab-table">
+                                <tr><td>3awni !</td><td>Aidez-moi !</td></tr>
+                                <tr><td>Finahd sbitar ?</td><td>Où est l'hôpital ?</td></tr>
+                                <tr><td>Sraqouli</td><td>On m'a volé</td></tr>
+                                <tr><td>3ayt l'boliss !</td><td>Appelez la police !</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-footer text-center">
+                    <p><strong>📚 Le programme complet comprend 10 cours :</strong></p>
+                    <div class="program-list">
+                        <span>1. Salutations</span><span>2. Famille</span><span>3. Nourriture</span>
+                        <span>4. Achats</span><span>5. Voyage</span><span>6. Temps</span>
+                        <span>7. Santé</span><span>8. Travail</span><span>9. Culture</span><span>10. Expressions</span>
+                    </div>
+                    <a href="#reservation" class="btn btn-primary mt-4">Programme complet</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Témoignages -->
+        <section id="temoignages" class="section" aria-labelledby="temoignages-heading">
+            <div class="container text-center">
+                <h2 id="temoignages-heading" class="section-title">💬 Ils me font confiance</h2>
+                <p class="section-subtitle">+150 élèves satisfaits, +1200 heures de cours données</p>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p>« Yassine est un professeur patient et pédagogue. J'ai énormément progressé en darija en 3 mois ! Je peux maintenant parler avec ma belle-famille. »</p>
+                        <div class="author">— Marie, Paris</div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p>« Les cours sont bien structurés et les exercices pratiques. La méthode est vraiment progressive et adaptée. »</p>
+                        <div class="author">— Thomas, Lyon</div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-stars">★★★★½</div>
+                        <p>« Excellente approche, Yassine s'adapte vraiment à votre rythme. Le paiement après le premier cours m'a tout de suite mis en confiance. »</p>
+                        <div class="author">— Sophie, Marseille</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="section bg-warm" aria-labelledby="faq-heading">
+            <div class="container max-w-3xl">
+                <h2 id="faq-heading" class="section-title text-center">❓ Foire aux questions</h2>
+                <p class="section-subtitle text-center">Tout ce que vous devez savoir avant de commencer</p>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Faut-il savoir lire l'arabe pour commencer ? <i class="fas fa-plus-circle faq-icon"></i></summary>
+                        <p>Non, pas du tout ! On commence par la phonétique et l'oral avec une transcription adaptée. La lecture et l'écriture viennent plus tard, uniquement si vous le souhaitez.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Comment se déroule le premier cours ? <i class="fas fa-plus-circle faq-icon"></i></summary>
+                        <p>Vous remplissez le formulaire, je vous contacte sous 2h. Nous fixons un créneau, vous suivez votre première séance, et <strong>vous ne payez qu'à l'issue du cours</strong>.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Peut-on annuler ou reporter une séance ? <i class="fas fa-plus-circle faq-icon"></i></summary>
+                        <p>Oui, annulation gratuite jusqu'à 24h avant. Passé ce délai, la séance est due. En cas d'imprévu de ma part, la séance est reportée sans frais.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Faites-vous des cours en ligne ou en présentiel ? <i class="fas fa-plus-circle faq-icon"></i></summary>
+                        <p>Les deux ! En ligne par visio (Zoom, Google Meet ou WhatsApp) partout dans le monde, ou à domicile si vous habitez Paris (15€/h).</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Quelle est la différence entre darija et arabe classique ? <i class="fas fa-plus-circle faq-icon"></i></summary>
+                        <p>La darija est le dialecte parlé au quotidien au Maroc. L'arabe classique est la langue standard, utilisée à l'écrit, dans les médias, les livres et le Coran. Je vous aide à choisir selon vos objectifs.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paiement -->
+        <section id="paiement" class="section" aria-labelledby="paiement-heading">
+            <div class="container max-w-4xl text-center">
+                <h2 id="paiement-heading" class="section-title">💳 Paiement sécurisé</h2>
+                <p class="section-subtitle">Règlement simple, après la première séance ou en début de mois pour les packs</p>
+                <div class="payment-grid">
+                    <div class="payment-card">
+                        <i class="fab fa-paypal text-4xl text-gold"></i>
+                        <h3>PayPal</h3>
+                        <p>Paiement sécurisé via PayPal</p>
+                        <div class="paypal-email" id="paypalEmail">yassinelmiloudi31@gmail.com</div>
+                        <button onclick="copyToClipboard('paypalEmail', '✓ Email PayPal copié !')" class="btn btn-outline btn-sm">
                             <i class="fas fa-copy"></i> Copier l'email
                         </button>
                     </div>
-
-                    <!-- Virement bancaire -->
-                    <div class="bg-[color:var(--card)] rounded-3xl p-8 text-center shadow-soft hover:-translate-y-2 transition">
-                        <i class="fas fa-university text-5xl text-[color:var(--primary)] mb-4"></i>
-
-                        <h3 class="text-2xl font-serif font-semibold mb-2">
-                            Virement bancaire
-                        </h3>
-
-                        <p class="text-sm text-[color:var(--muted-foreground)] mb-4">
-                            Virement SEPA disponible sur demande.
-                        </p>
-
-                        <div class="bg-[color:var(--muted)]/30 p-4 rounded-xl text-sm text-[color:var(--muted-foreground)]">
-                            🔒 Pour recevoir le RIB, merci de me contacter directement après réservation
-                            (WhatsApp ou email).
-                        </div>
+                    <div class="payment-card">
+                        <i class="fas fa-university text-4xl text-gold"></i>
+                        <h3>Virement bancaire</h3>
+                        <p>Virement SEPA disponible sur demande.</p>
+                        <p class="text-muted">🔒 Pour recevoir le RIB, contactez-moi directement après réservation.</p>
                     </div>
-
                 </div>
-
-                <div class="text-center mt-8 p-4 bg-white/50 rounded-2xl max-w-lg mx-auto">
-                    <i class="fas fa-shield-alt text-[color:var(--sage)] mr-2"></i>
-                    <span class="text-sm text-[color:var(--muted-foreground)]">
-                        Paiement après la première séance, ou au début du mois pour les packs.
-                        <strong>Zéro risque.</strong>
-                    </span>
+                <div class="secure-badge">
+                    <i class="fas fa-shield-alt"></i> Paiement après la première séance, ou au début du mois pour les packs. <strong>Zéro risque.</strong>
                 </div>
             </div>
         </section>
 
-        <section id="reservation" class="py-20" aria-labelledby="reservation-heading">
-            <div class="max-w-3xl mx-auto px-6">
-                <h2 id="reservation-heading" class="text-4xl lg:text-5xl font-serif font-bold text-center mb-4">📝 Réserver mon 1er cours</h2>
-                <p class="text-center text-[color:var(--muted-foreground)] mb-10">Remplissez le formulaire, je vous réponds <strong>sous 2h</strong>. <strong>Paiement après la séance.</strong></p>
-                <div class="bg-[color:var(--card)] rounded-3xl p-8 shadow-soft">
-                    <form id="bookingForm" class="space-y-5" novalidate>
-                        <div class="grid md:grid-cols-2 gap-5">
-                            <div>
-                                <label for="fullname" class="block text-sm font-medium mb-1 text-[color:var(--muted-foreground)]">Nom complet <span class="text-[color:var(--destructive)]">*</span></label>
-                                <input type="text" id="fullname" name="fullname" placeholder="Ex: Marie Dupont" class="w-full px-5 py-3 rounded-2xl border-2 border-[color:var(--input)] focus:border-[color:var(--primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--ring)]/30 transition bg-[color:var(--background)]" required autocomplete="name">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium mb-1 text-[color:var(--muted-foreground)]">Email <span class="text-[color:var(--destructive)]">*</span></label>
-                                <input type="email" id="email" name="email" placeholder="marie@exemple.fr" class="w-full px-5 py-3 rounded-2xl border-2 border-[color:var(--input)] focus:border-[color:var(--primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--ring)]/30 transition bg-[color:var(--background)]" required autocomplete="email">
-                            </div>
+        <!-- Réservation -->
+        <section id="reservation" class="section bg-warm" aria-labelledby="reservation-heading">
+            <div class="container max-w-3xl">
+                <h2 id="reservation-heading" class="section-title text-center">📝 Réserver mon 1er cours</h2>
+                <p class="section-subtitle text-center">Remplissez le formulaire, je réponds <strong>sous 2h</strong>. Paiement après la séance.</p>
+                <form id="bookingForm" class="booking-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullname">Nom complet *</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Marie Dupont" required autocomplete="name">
+                            <span class="error-msg"></span>
                         </div>
-                        <div class="grid md:grid-cols-2 gap-5">
-                            <div>
-                                <label for="courseType" class="block text-sm font-medium mb-1 text-[color:var(--muted-foreground)]">Type de cours <span class="text-[color:var(--destructive)]">*</span></label>
-                                <select id="courseType" name="courseType" class="w-full px-5 py-3 rounded-2xl border-2 border-[color:var(--input)] focus:border-[color:var(--primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--ring)]/30 bg-[color:var(--background)] transition" required>
-                                    <option value="" disabled selected>👉 Choisissez votre formule</option>
-                                    <option value="Arabe classique en ligne (10€/h)">Arabe classique en ligne - 10€/h</option>
-                                    <option value="Darija en ligne (10€/h)">Darija en ligne - 10€/h</option>
-                                    <option value="Cours à domicile Paris (15€/h)">Cours à domicile (Paris) - 15€/h</option>
-                                    <option value="Pack 5 cours (45€)">Pack 5 cours - 45€</option>
-                                    <option value="Pack 10 cours (80€)">Pack 10 cours - 80€</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="phone" class="block text-sm font-medium mb-1 text-[color:var(--muted-foreground)]">Téléphone (WhatsApp) <span class="text-[color:var(--destructive)]">*</span></label>
-                                <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" class="w-full px-5 py-3 rounded-2xl border-2 border-[color:var(--input)] focus:border-[color:var(--primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--ring)]/30 bg-[color:var(--background)] transition" required autocomplete="tel">
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="marie@exemple.fr" required autocomplete="email">
+                            <span class="error-msg"></span>
                         </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium mb-1 text-[color:var(--muted-foreground)]">Votre niveau, disponibilités, objectifs...</label>
-                            <textarea id="message" name="message" rows="3" placeholder="Ex: Débutant, disponible le soir, objectif : parler avec ma belle-famille..." class="w-full px-5 py-3 rounded-2xl border-2 border-[color:var(--input)] focus:border-[color:var(--primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--ring)]/30 bg-[color:var(--background)] transition"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="courseType">Type de cours *</label>
+                            <select id="courseType" name="courseType" required>
+                                <option value="" disabled selected>👉 Choisissez votre formule</option>
+                                <option value="Arabe classique en ligne (10€/h)">Arabe classique en ligne - 10€/h</option>
+                                <option value="Darija en ligne (10€/h)">Darija en ligne - 10€/h</option>
+                                <option value="Cours à domicile Paris (15€/h)">Cours à domicile (Paris) - 15€/h</option>
+                                <option value="Pack 5 cours (45€)">Pack 5 cours - 45€</option>
+                                <option value="Pack 10 cours (80€)">Pack 10 cours - 80€</option>
+                            </select>
+                            <span class="error-msg"></span>
                         </div>
-                        <button type="submit" class="w-full bg-[color:var(--primary)] text-white py-3 rounded-full font-semibold shadow-md hover:-translate-y-1 transition flex items-center justify-center gap-2 text-lg">
-                            <i class="fab fa-whatsapp" aria-hidden="true"></i> Envoyer & réserver mon 1er cours
-                        </button>
-                        <p class="text-xs text-center text-[color:var(--muted-foreground)]">🛡️ Vos informations restent confidentielles. Paiement <strong>après</strong> la première séance.</p>
-                    </form>
-                </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone (WhatsApp) *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" required autocomplete="tel">
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre niveau, disponibilités, objectifs...</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Ex: Débutant, disponible le soir, objectif : parler avec ma belle-famille..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fab fa-whatsapp"></i> Envoyer & réserver mon 1er cours
+                    </button>
+                    <p class="form-disclaimer">🛡️ Vos informations restent confidentielles. Paiement <strong>après</strong> la première séance.</p>
+                </form>
             </div>
         </section>
     </main>
 
-    <footer class="bg-[color:var(--foreground)] text-[color:var(--muted)] py-12" role="contentinfo">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h3 class="text-3xl font-serif mb-4 text-white">Nour Alarabiya</h3>
-            <p class="mb-6 opacity-80 max-w-md mx-auto">L'arabe comme une lumière – de Fès à Paris, et partout avec vous.</p>
-            <div class="flex justify-center gap-6 text-2xl mb-6">
-                <a href="mailto:yassinelmiloudi31@gmail.com" class="hover:text-white transition p-2" aria-label="Envoyer un email"><i class="fas fa-envelope"></i></a>
-                <a href="https://wa.me/33758648161" class="hover:text-white transition p-2" aria-label="Contacter sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <footer class="footer" role="contentinfo">
+        <div class="container text-center">
+            <h3 class="footer-logo">Yassine Darija</h3>
+            <p>L'arabe comme une lumière – de Fès à Paris, et partout avec vous.</p>
+            <div class="footer-links">
+                <a href="mailto:yassinelmiloudi31@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/33758648161"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <p class="text-sm opacity-60">&copy; 2026 Nour Alarabiya – Yassine. Paiement après le 1er cours.</p>
+            <p class="copyright">&copy; 2026 Yassine Darija. Paiement après le 1er cours.</p>
         </div>
     </footer>
 
-    <div id="toast" class="toast" role="status" aria-live="polite">
-        <i class="fas fa-check-circle text-[color:var(--sage)]"></i> <span>Copié !</span>
+    <!-- Toast -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta" id="floatingCta">
+        <a href="#reservation" class="btn btn-primary"><i class="fas fa-shield-alt"></i> Paiement après cours</a>
+        <a href="https://wa.me/33758648161" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
-    <div class="floating-cta" id="floatingCta" aria-hidden="true">
-        <a href="#reservation" class="flex-1 bg-[color:var(--primary)] text-white px-6 py-3 rounded-full font-semibold shadow-lg text-center text-sm flex items-center justify-center gap-2">
-            <i class="fas fa-shield-alt"></i> Paiement après cours
-        </a>
-        <a href="https://wa.me/33758648161" class="bg-[#25D366] text-white px-6 py-3 rounded-full font-semibold shadow-lg text-center text-sm flex items-center justify-center gap-2">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-    </div>
-
+    <!-- Script -->
     <script src="js/script.js"></script>
 </body>
 </html>
