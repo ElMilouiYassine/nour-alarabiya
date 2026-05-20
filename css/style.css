@@ -17,7 +17,6 @@
     --font-serif: 'Amiri', serif;
     --font-body: 'IBM Plex Sans Arabic', system-ui, sans-serif;
     --transition: 0.3s ease;
-    /* ✅ 1. Variable Glassmorphism */
     --card-glass: rgba(255,255,255,0.85);
 }
 
@@ -33,7 +32,6 @@ body {
     position: relative;
 }
 
-/* ✅ 3. Amélioration de la visibilité du background */
 body::before {
     content: "";
     position: fixed;
@@ -101,9 +99,25 @@ h3 { font-size: 1.25rem; }
 .btn-whatsapp-nav { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 1rem; border-radius: 2rem; background: var(--olive); color: white; font-weight: 600; font-size:0.9rem; }
 .btn-whatsapp-nav:hover { background: var(--olive-light); }
 
-/* ===== Hero ===== */
-.hero { padding: 5rem 0; display: flex; align-items: center; min-height: 70vh; }
-.hero-content { max-width: 600px; margin-left: 40px; }
+/* ===== Hero (grille deux colonnes) ===== */
+.hero {
+    padding: 5rem 0;
+    min-height: 70vh;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* ✅ Colonne gauche – bien décollée du bord */
+.hero-content {
+    margin-left: 1.5rem;            /* marge intérieure gauche confortable */
+    max-width: 480px;              /* ajusté pour laisser respirer la grille */
+}
+
 .badge {
     display: inline-flex; align-items: center; gap: 0.4rem;
     background: var(--olive); color: white; padding: 0.3rem 1rem; border-radius: 2rem;
@@ -114,7 +128,6 @@ h3 { font-size: 1.25rem; }
 .hero-stats { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
 .stars i { color: #F0C05A; }
 
-/* ✅ Modifier Price Box (Glass) */
 .price-box {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: var(--card-glass);
@@ -126,16 +139,98 @@ h3 { font-size: 1.25rem; }
 .divider { width:1px; height:1.5rem; background: var(--border); margin: 0 0.5rem; }
 .hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
 
+/* ✅ Carte Ebook (verre dépoli premium) */
+.ebook-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.15) 100%);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 1.25rem;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    justify-self: center;
+    width: 100%;
+    max-width: 350px;
+    position: relative;
+    overflow: hidden;
+    margin-left: 1rem;
+}
+
+.ebook-card::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    background: rgba(168, 132, 76, 0.15);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.ebook-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(168, 132, 76, 0.4);
+}
+
+.ebook-cover {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 1;
+    position: relative;
+}
+
+.ebook-card:hover .ebook-cover {
+    transform: scale(1.05);
+}
+
+.ebook-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--gold);
+    z-index: 1;
+    position: relative;
+}
+
+.ebook-desc {
+    font-size: 0.95rem;
+    color: #4B4B4B;
+    font-weight: 400;
+    line-height: 1.5;
+    z-index: 1;
+    position: relative;
+    max-width: 280px;
+}
+
+.btn-ebook {
+    margin-top: 0.5rem;
+    z-index: 1;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(168, 132, 76, 0.3);
+    font-weight: 600;
+}
+
 /* ===== Sections communes ===== */
 .section-title { margin-bottom: 0.5rem; }
 .section-subtitle { color: #6B6B5B; margin-bottom: 2.5rem; }
 
-/* ✅ Steps (Glass) */
+/* Steps */
 .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
-.step-card { 
+.step-card {
     background: var(--card-glass);
     backdrop-filter: blur(6px);
-    border-radius: var(--radius); padding: 2rem; position: relative; box-shadow: var(--shadow); text-align: center; 
+    border-radius: var(--radius); padding: 2rem; position: relative; box-shadow: var(--shadow); text-align: center;
 }
 .step-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
 .step-number {
@@ -146,7 +241,7 @@ h3 { font-size: 1.25rem; }
 }
 .step-icon { font-size: 2.2rem; color: var(--gold); margin: 0.5rem 0 1rem; }
 
-/* ✅ Why grid & Card (Glass) */
+/* Why grid & Cards */
 .why-grid, .parcours-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
 .card {
     background: var(--card-glass);
@@ -160,7 +255,7 @@ h3 { font-size: 1.25rem; }
 .course-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
 .badge-outline { display: inline-block; margin-top: 1rem; padding: 0.2rem 1rem; border: 1px solid var(--gold); border-radius: 2rem; font-size: 0.8rem; color: var(--gold); }
 
-/* ✅ Packs (Glass) */
+/* Packs */
 .packs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 700px; margin: 0 auto; }
 .pack-radio { display: none; }
 .pack-card {
@@ -186,11 +281,11 @@ h3 { font-size: 1.25rem; }
 }
 .note { margin-top: 1rem; font-size: 0.9rem; color: #666; }
 
-/* ✅ Leçons (Glass) */
-.lesson { 
-    background: var(--card-glass); 
+/* Leçons */
+.lesson {
+    background: var(--card-glass);
     backdrop-filter: blur(6px);
-    border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1.5rem; overflow: hidden; 
+    border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1.5rem; overflow: hidden;
 }
 .lesson-toggle {
     width:100%; background: var(--gold); color: white; padding: 1rem 1.5rem; border: none;
@@ -210,33 +305,32 @@ h3 { font-size: 1.25rem; }
 .vocab-table td, .vocab-table th { border-bottom:1px solid var(--border); padding:0.5rem 0.2rem; }
 .vocab-table th { font-weight: 600; color: var(--gold); }
 
-/* ✅ Program Footer & List (Glass sur fond spécifique) */
-.program-footer { 
+.program-footer {
     background: var(--card-glass);
     backdrop-filter: blur(6px);
-    border-radius: var(--radius); padding:2rem; box-shadow: var(--shadow); margin-top:2rem; 
+    border-radius: var(--radius); padding:2rem; box-shadow: var(--shadow); margin-top:2rem;
 }
 .program-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 1.5rem; margin:1rem 0; }
 .program-list span { font-size:0.9rem; background: #F1EDE4; padding:0.2rem 0.8rem; border-radius:1rem; }
 
-/* ✅ Témoignages (Glass) */
+/* Témoignages */
 .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:2rem; }
-.testimonial-card { 
+.testimonial-card {
     background: var(--card-glass);
     backdrop-filter: blur(6px);
-    padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: left; position: relative; 
+    padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: left; position: relative;
 }
 .testimonial-card::before { content: "❝"; position: absolute; top: -10px; left: 20px; font-size: 3rem; color: rgba(168,132,76,0.2); font-family: serif; }
 .testimonial-stars { color: #F0C05A; margin-bottom: 1rem; }
 .testimonial-card p { font-style: italic; margin-bottom: 1rem; }
 .author { font-weight: 600; color: var(--gold); }
 
-/* ✅ FAQ (Glass) */
+/* FAQ */
 .faq-list { display: flex; flex-direction: column; gap: 1rem; }
-.faq-item { 
+.faq-item {
     background: var(--card-glass);
     backdrop-filter: blur(6px);
-    border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem 1.5rem; 
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem 1.5rem;
 }
 .faq-item summary {
     font-weight: 600; cursor: pointer; list-style: none;
@@ -247,29 +341,28 @@ h3 { font-size: 1.25rem; }
 .faq-item[open] summary .faq-icon { transform: rotate(45deg); }
 .faq-item p { margin-top: 0.8rem; font-size: 0.95rem; color: #555; }
 
-/* ✅ Paiement (Glass) */
+/* Paiement */
 .payment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:2rem; margin-bottom:2rem; }
-.payment-card { 
+.payment-card {
     background: var(--card-glass);
     backdrop-filter: blur(6px);
-    border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); text-align: center; 
+    border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); text-align: center;
 }
 .payment-card h3 { margin: 1rem 0 0.5rem; }
 .paypal-email { background: #F5F3EC; padding:0.6rem; border-radius: 0.5rem; font-family: monospace; margin: 1rem 0; font-size:0.9rem; }
 
-/* ✅ Secure Badge (Glass) */
-.secure-badge { 
-    display: inline-flex; align-items: center; gap:0.5rem; 
+.secure-badge {
+    display: inline-flex; align-items: center; gap:0.5rem;
     background: var(--card-glass);
     backdrop-filter: blur(6px);
-    padding:1rem 2rem; border-radius: 2rem; box-shadow: var(--shadow); font-size: 0.9rem; 
+    padding:1rem 2rem; border-radius: 2rem; box-shadow: var(--shadow); font-size: 0.9rem;
 }
 
-/* ✅ Réservation (Glass) */
-.booking-form { 
+/* Réservation */
+.booking-form {
     background: var(--card-glass);
     backdrop-filter: blur(6px);
-    border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); 
+    border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow);
 }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem; }
 .form-group { display: flex; flex-direction: column; }
@@ -277,7 +370,7 @@ h3 { font-size: 1.25rem; }
 .form-group input, .form-group select, .form-group textarea {
     padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm);
     font-family: var(--font-body); font-size: 0.95rem; transition: border var(--transition); outline: none;
-    background: rgba(255, 255, 255, 0.5); /* Optionnel : léger fond sur les inputs */
+    background: rgba(255, 255, 255, 0.5);
 }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: var(--gold); box-shadow: 0 0 0 3px rgba(168,132,76,0.15);
@@ -327,6 +420,20 @@ h3 { font-size: 1.25rem; }
     .price-box { flex-wrap: wrap; justify-content: center; }
     .hero-stats { flex-direction: column; }
     .steps, .why-grid, .parcours-grid, .testimonials-grid { grid-template-columns: 1fr; }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 2rem;
+    }
+    .hero-content {
+        max-width: 100%;
+        margin-left: 0;               /* supprime la marge sur mobile */
+    }
+    .ebook-card {
+        max-width: 100%;
+        margin-left: 0;
+    }
 }
 
 /* Skip link */
