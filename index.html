@@ -3,14 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cours d'arabe et de darija marocaine avec Yassine, professeur originaire de Fès et basé à Paris. Paiement après le 1er cours ! Méthode progressive. 10€/h en ligne.">
-    <meta name="keywords" content="cours arabe Paris, apprendre darija, professeur arabe maroc, cours arabe en ligne, Yassine, darija marocaine">
-    <meta name="author" content="Yassine">
-    <meta name="robots" content="index, follow">
-    <title>Yassine Darija | Cours d’Arabe & Darija</title>
-    <link rel="icon" type="image/png" href="images/icon.png">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="format-detection" content="telephone=no">
 
-    <!-- Google Fonts -->
+    <!-- SEO principal -->
+    <title>Cours d'Arabe et de Darija Marocaine en Ligne | Yassine - Paris & Fès</title>
+    <meta name="description" content="Apprenez la darija marocaine ou l'arabe classique avec Yassine, professeur natif de Fès basé à Paris. Cours en ligne 10€/h, paiement après le 1er cours. Réservez !">
+    <meta name="keywords" content="cours arabe en ligne, cours darija marocaine, professeur arabe Paris, apprendre l'arabe, darija pour débutants, cours arabe classique, Yassine">
+    <meta name="author" content="Yassine">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://www.yassinedarija.fr/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="Cours d'Arabe et de Darija Marocaine en Ligne | Yassine">
+    <meta property="og:description" content="Professeur natif de Fès, Yassine vous accompagne en darija et arabe classique. Paiement après le 1er cours. 10€/h en ligne.">
+    <meta property="og:url" content="https://www.yassinedarija.fr/">
+    <meta property="og:image" content="https://www.yassinedarija.fr/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Yassine Darija">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cours d'Arabe et de Darija Marocaine en Ligne | Yassine">
+    <meta name="twitter:description" content="Apprenez la darija et l'arabe avec un professeur natif. Paiement après le 1er cours. 10€/h.">
+    <meta name="twitter:image" content="https://www.yassinedarija.fr/images/og-image.jpg">
+    <meta name="twitter:image:alt" content="Yassine - Cours d'arabe et darija en ligne">
+
+    <!-- Icône -->
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="apple-touch-icon" href="images/icon.png">
+
+    <!-- Google Fonts avec preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,12 +44,133 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind (CDN) -->
+    <!-- Tailwind (CDN) - Pour production, remplacez par un fichier CSS compilé -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Styles personnalisés -->
-    <link rel="stylesheet" href="/css/style.css">
+    <!-- Styles personnalisés (chemin relatif pour test local) -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Vérification Google Search Console -->
     <meta name="google-site-verification" content="kmltfRnlHAii1eCZhLEKuIyTh0uF9YK1sDZX2qAYUw0" />
+
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://www.yassinedarija.fr/#yassine",
+          "name": "Yassine",
+          "jobTitle": "Professeur d'arabe et de darija marocaine",
+          "description": "Professeur natif de Fès, basé à Paris, proposant des cours d'arabe classique et de darija marocaine en ligne et à domicile.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "knowsLanguage": ["ar", "fr", "ary"],
+          "email": "mailto:yassinelmiloudi31@gmail.com",
+          "telephone": "+33758648161",
+          "url": "https://www.yassinedarija.fr/"
+        },
+        {
+          "@type": "Course",
+          "name": "Cours de Darija Marocaine et Arabe Classique en ligne",
+          "description": "Cours particuliers d'arabe classique et de darija marocaine avec un professeur natif. Méthode progressive, paiement après le premier cours.",
+          "provider": { "@id": "https://www.yassinedarija.fr/#yassine" },
+          "offers": [
+            {
+              "@type": "Offer",
+              "price": "10",
+              "priceCurrency": "EUR",
+              "description": "Cours en ligne à l'unité"
+            },
+            {
+              "@type": "Offer",
+              "price": "15",
+              "priceCurrency": "EUR",
+              "description": "Cours à domicile à Paris"
+            },
+            {
+              "@type": "Offer",
+              "price": "45",
+              "priceCurrency": "EUR",
+              "description": "Pack 5 cours en ligne"
+            },
+            {
+              "@type": "Offer",
+              "price": "80",
+              "priceCurrency": "EUR",
+              "description": "Pack 10 cours en ligne"
+            }
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "18"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Ebook Darija – Chapitre I",
+          "description": "Guide complet pour maîtriser la darija marocaine avec exercices et culture.",
+          "image": "https://www.yassinedarija.fr/images/ebook-cover.png",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ko-fi.com/s/fc1fd612a2",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Faut-il savoir lire l'arabe pour commencer ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Non, pas du tout ! On commence par la phonétique et l'oral avec une transcription adaptée. La lecture et l'écriture viennent plus tard, uniquement si vous le souhaitez."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment se déroule le premier cours ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Vous remplissez le formulaire, je vous contacte sous 2h. Nous fixons un créneau, vous suivez votre première séance, et vous ne payez qu'à l'issue du cours."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Peut-on annuler ou reporter une séance ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui, annulation gratuite jusqu'à 24h avant. Passé ce délai, la séance est due. En cas d'imprévu de ma part, la séance est reportée sans frais."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Faites-vous des cours en ligne ou en présentiel ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Les deux ! En ligne par visio (Zoom, Google Meet ou WhatsApp) partout dans le monde, ou à domicile si vous habitez Paris (15€/h)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quelle est la différence entre darija et arabe classique ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La darija est le dialecte parlé au quotidien au Maroc. L'arabe classique est la langue standard, utilisée à l'écrit, dans les médias, les livres et le Coran. Je vous aide à choisir selon vos objectifs."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="font-body bg-cream text-foreground">
 
@@ -34,7 +181,7 @@
     <header class="header" role="banner">
         <div class="container header-inner">
             <a href="#" class="logo">
-                <img src="images/icon.png" alt="Logo Yassine Darija" class="logo-img">
+                <img src="images/icon.png" alt="Logo Yassine Darija - Cours d'arabe et darija" class="logo-img" width="40" height="40">
                 <span class="logo-text">Yassine Darija</span>
             </a>
 
@@ -73,11 +220,11 @@
                     </span>
 
                     <h1 id="hero-heading">
-                        La Darija <span class="text-gold">avec le cœur</span>
+                        Cours d’Arabe et de Darija Marocaine <span class="text-gold">avec le cœur</span>
                     </h1>
                     <p class="hero-desc">
                         Je m'appelle <strong>Yassine</strong>, natif de Fès et installé à Paris.
-                        Je vous enseigne la darija marocaine et l’arabe classique avec une méthode douce et progressive.
+                        Je vous enseigne la <strong>darija marocaine</strong> et l’<strong>arabe classique</strong> avec une méthode douce et progressive.
                     </p>
 
                     <div class="hero-stats">
@@ -100,7 +247,7 @@
 
                 <!-- Colonne droite : Ebook -->
                 <div class="ebook-card reveal">
-                    <img src="./images/ebook-cover.png" alt="Couverture de l'ebook Darija avec Yassine" class="ebook-cover">
+                    <img src="images/ebook-cover.png" alt="Couverture de l'ebook Darija avec Yassine - Guide pour apprendre la darija marocaine" class="ebook-cover" loading="lazy">
                     <h3 class="ebook-title">📘 Nouvel Ebook !</h3>
                     <p class="ebook-desc">Maîtrisez la darija avec mon guide complet. Exercices, culture...</p>
                     <a href="https://ko-fi.com/s/fc1fd612a2" class="btn btn-primary btn-ebook" target="_blank" rel="noopener">
@@ -306,21 +453,21 @@
                 <h2 id="temoignages-heading" class="section-title">💬 Ils me font confiance</h2>
                 <p class="section-subtitle">+150 élèves satisfaits, +1200 heures de cours données</p>
                 <div class="testimonials-grid">
-                    <div class="testimonial-card reveal">
+                    <article class="testimonial-card reveal">
                         <div class="testimonial-stars">★★★★★</div>
                         <p>« Yassine est un professeur patient et pédagogue. J'ai énormément progressé en darija en 3 mois ! Je peux maintenant parler avec ma belle-famille. »</p>
                         <div class="author">— Marie, Paris</div>
-                    </div>
-                    <div class="testimonial-card reveal">
+                    </article>
+                    <article class="testimonial-card reveal">
                         <div class="testimonial-stars">★★★★★</div>
                         <p>« Les cours sont bien structurés et les exercices pratiques. La méthode est vraiment progressive et adaptée. »</p>
                         <div class="author">— Thomas, Lyon</div>
-                    </div>
-                    <div class="testimonial-card reveal">
+                    </article>
+                    <article class="testimonial-card reveal">
                         <div class="testimonial-stars">★★★★½</div>
                         <p>« Excellente approche, Yassine s'adapte vraiment à votre rythme. Le paiement après le premier cours m'a tout de suite mis en confiance. »</p>
                         <div class="author">— Sophie, Marseille</div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -440,7 +587,6 @@
             <div class="footer-links">
                 <a href="mailto:yassinelmiloudi31@gmail.com"><i class="fas fa-envelope"></i></a>
                 <a href="https://wa.me/33758648161"><i class="fab fa-whatsapp"></i></a>
-                <!-- Instagram ajouté -->
                 <a href="https://www.instagram.com/darija_avec_yassine/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
             <p class="copyright">&copy; 2026 Yassine Darija. Paiement après le 1er cours.</p>
@@ -456,7 +602,7 @@
         <a href="https://wa.me/33758648161" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
-    <!-- Script -->
-    <script src="/js/script.js"></script>
+    <!-- Script (chemin relatif pour test local) -->
+    <script src="js/script.js"></script>
 </body>
 </html>
